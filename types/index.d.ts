@@ -10,7 +10,7 @@ declare type CreateUserParams = {
     photo: string;
   };
   
-  declare type UpdateUserParams = {
+  interface UpdateUserParams  {
     firstName: string;
     lastName: string;
     username: string;
