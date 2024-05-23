@@ -5,8 +5,6 @@ import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CldImage } from "next-cloudinary";
 
-
-
 import {
   Pagination,
   PaginationContent,
@@ -58,7 +56,7 @@ export const Collection = ({
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (
-            <Card image={image} key={image._id as React.Key} />
+            <Card image={image} key={String(image._id)} />
           ))}
         </ul>
       ) : (
@@ -96,9 +94,9 @@ export const Collection = ({
   );
 };
 
-const Card = ({ image, key }: { image: IImage; key: React.Key }) => {
+const Card = ({ image }: { image: IImage }) => {
   return (
-    <li key={key}>
+    <li>
       <Link href={`/transformations/${image._id}`} className="collection-card">
         <CldImage
           src={image.publicId}
